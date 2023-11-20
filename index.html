@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <script>
+    function validateDate() {
+      // Get the input value
+      var dobInput = document.getElementById('dob');
+      var dob = new Date(dobInput.value);
+
+      // Get the current date
+      var currentDate = new Date();
+
+      // Calculate the age
+      var age = currentDate.getFullYear() - dob.getFullYear();
+
+      // Check if the age is within the range of 18 and 55
+      if (age < 18 || age > 55) {
+        alert('Age must be between 18 and 55.');
+        dobInput.value = ''; // Clear the input field
+      }
+    }
+  </script>
+</head>
+<body>
+  <form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" onchange="validateDate()" required>
+
+    <label for="terms">Accept terms:</label>
+    <input type="checkbox" id="terms" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Dob</th>
+        <th>Accepted terms?</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</body>
+</html>
